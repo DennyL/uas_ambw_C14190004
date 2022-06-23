@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:uas_ambw/dataclass.dart';
 import 'package:uas_ambw/main.dart';
+import 'package:uas_ambw/pages/detail.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -33,20 +34,32 @@ class _HomeState extends State<Home> {
                     shrinkWrap: true,
                     itemCount: isiData.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        child: ListTile(
-                          title: Text(isiData[index].cTitle),
-                          leading: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image:
-                                    NetworkImage(isiData[index].cThumbnail),
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail(
+                                data: isiData[index],
                               ),
                             ),
+                          );
+                        },
+                        child: Card(
+                          child: ListTile(
+                            title: Text(isiData[index].cTitle),
+                            leading: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image:
+                                      NetworkImage(isiData[index].cThumbnail),
+                                ),
+                              ),
+                            ),
+                            subtitle: Text(isiData[index].cPubDate),
                           ),
-                          subtitle: Text(isiData[index].cPubDate),
                         ),
                       );
                     },

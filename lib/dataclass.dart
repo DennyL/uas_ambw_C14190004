@@ -13,6 +13,16 @@ class DataAPI {
     required this.cLink,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'title': cTitle,
+      'pubDate': cPubDate,
+      'description': cDesc,
+      'thumbnail': cThumbnail,
+      'link': cLink
+    };
+  }
+
   factory DataAPI.fromJSON(Map<String, dynamic> json) {
     return DataAPI(
         cTitle: json['title'],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Like extends StatefulWidget {
-  const Like({Key? key}) : super(key: key);
+  const Like({Key? key,}) : super(key: key);
 
   @override
   State<Like> createState() => _LikeState();
