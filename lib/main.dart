@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, TODO
 
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:uas_ambw/apiservices.dart';
 import 'package:uas_ambw/dataclass.dart';
 import 'package:uas_ambw/firebase_options.dart';
 import 'package:uas_ambw/pages/detail.dart';
@@ -32,8 +35,11 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+late Future<List<DataAPI>> DataList;
+
 class _MyAppState extends State<MyApp> {
   int actIndex = 0;
+  Service ServiceAPI = Service();
 
   void changeActivePage(int index) {
     setState(() {
@@ -51,10 +57,9 @@ class _MyAppState extends State<MyApp> {
       Like(),
       Detail(),
     ];
+    DataList = ServiceAPI.getAllData();
     super.initState();
   }
-
-  late Future<List<DataAPI>> listdata;
 
   @override
   Widget build(BuildContext context) {

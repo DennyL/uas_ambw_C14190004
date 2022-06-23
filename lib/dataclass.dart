@@ -16,9 +16,9 @@ class DataAPI {
   factory DataAPI.fromJSON(Map<String, dynamic> json) {
     return DataAPI(
         cTitle: json['title'],
-        cPubDate: 'pubDate',
-        cDesc: 'description',
-        cThumbnail: 'thumbnail',
-        cLink: 'link');
+        cPubDate: json['pubDate'],
+        cDesc: json['description'],
+        cThumbnail: json['thumbnail'],
+        cLink: json['link']);
   }
 }
